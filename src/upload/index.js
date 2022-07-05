@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; //리다이렉션 홈으로
 import { API_URL } from '../config/contansts';
 
-
+// 업로드페이지에서 이미지 올리면
 const UploadPage = (props) => {
     const navigate = useNavigate(); //리다이렉션 홈으로
     //이미지 경로 상태관리 추가 
@@ -38,7 +38,7 @@ const UploadPage = (props) => {
         description:values.description
        }).then((result)=>{
         console.log(result);
-        navigate("/"); //리다이렉션 홈으로
+        navigate("/"); //상품등록하기 버튼 누르면 리다이렉션 홈으로
        })
        .catch(e=>{
         console.log(e);

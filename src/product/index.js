@@ -1,25 +1,24 @@
-
 import "./product.scss";
-import axios from 'axios';
+import axios from 'axios';  //axios 사용해서 get, put, post, delete등의 메서드로 api요청함
 import { useParams } from 'react-router-dom';
 import useAsync from '../customHook/useAsync';
 import { useNavigate } from 'react-router-dom'; //리다이렉션 홈으로
-import { API_URL } from '../config/contansts';
-
+import { API_URL } from '../config/contansts'; // http://localhost:3000을 API_URL상수로 만들어서 사용
 
 async function getProduct(id){
     const response = await axios.get(`${API_URL}/product/${id}`);
     return response.data;
 }
+// 상품페이지
 const ProductPage = () => { 
-    const navigate = useNavigate(); //리다이렉션 홈으로
+    const navigate = useNavigate(); //삭제하면 리다이렉션 홈으로
     //product/1
-    const { id } = useParams();
+    const { id } = useParams();     //useParams() -> 파라미터 값을 가지고 있는 객체를 반환
     const [state] = useAsync(()=>getProduct(id),[id]);
     const { loading, data:product, error } = state;
 
     const productDel = () => {
-        axios.delete(`${API_URL}/product/${id}`)
+        axios.delete(`${API_URL}/product/${id}`)    //axios 사용해서 delete메소드 api 요청
         .then(result=> {
             console.log("삭제되었습니다.");
             navigate("/"); //리다이렉션 홈으로

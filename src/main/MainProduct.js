@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const MainProduct = ({product}) => {
     return (
         <div className="product-card">
+            {/* 누르면 상품페이지로 누른 값을 받아옴*/}
             <Link to={`/product/${product.id}`}>
             <div className='product-img'>
                 <img src={product.imageUrl} alt="" />
